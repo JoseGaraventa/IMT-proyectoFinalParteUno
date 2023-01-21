@@ -4,15 +4,15 @@ import Producto from './Producto';
 import {carritoReducer, carritoInitialState} from "./CarritoReducer" 
 import { TYPES } from './Actions';
 import ItemCarrito from './ItemCarrito';
-import axios from 'axios';
+import axios from "axios"
 
 
 const Carrito = () => {
     const [state, dispatch] = useReducer(carritoReducer, carritoInitialState);
 
-    const actualizarEstado= async = () => {
-    const productosURL="http://localhost:3000/products";
-    const carritoURL="http://localhost:3000/carrito";
+    const actualizarEstado= async () => {
+    const productosURL="http://localhost:8080/products";
+    const carritoURL="http://localhost:8080/carrito";
 
     const listaProductos = await axios.get(productosURL);
     const carrito = await axios.get(carritoURL);
