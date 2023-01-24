@@ -26,7 +26,7 @@ const Contacto = () => {
   <div className="col-8">
     <div className="form-check d-flex">
       <input className="form-check-input" type="checkbox" id="gridCheck"/>
-      <label className="form-check-label fst-italic m-2" for="gridCheck">
+      <label className="form-check-label fst-italic ms-2" for="gridCheck">
         Acepto los terminos y condiciones
       </label>
     </div>

@@ -4,7 +4,7 @@ import Producto from './Producto';
 import {carritoReducer, carritoInitialState} from "./CarritoReducer" 
 import { TYPES } from './Actions';
 import ItemCarrito from './ItemCarrito';
-import axios from "axios"
+import axios from "axios";
 
 
 const Carrito = () => {
@@ -21,12 +21,13 @@ const Carrito = () => {
     const nuevoCarrito= carrito.data;
 
     dispatch ({type: TYPES.READ_STATE, payload:[nuevosProductos, nuevoCarrito]});
-
+   
   };
 
-useEffect(() => {
-  actualizarEstado();
-  }, []);
+  useEffect(() => {
+    actualizarEstado();
+    }, []);
+
 
     const { products, carrito } = state;
   
@@ -47,6 +48,8 @@ useEffect(() => {
 
     const clearCart = () => {dispatch({type: TYPES.CLEAR_CART})
   };
+
+
   
   
   
