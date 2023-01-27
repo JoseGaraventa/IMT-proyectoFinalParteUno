@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contacto = () => {
     return (
-        <form className="row h-90 g-3 m-3">
+        <form style={{height:"27rem"}} className="row g-3 m-3">
   <div className="col-md-12">
     <label for="inputEmail4" className="form-label fw-bolder">Email</label>
     <input type="email" className="form-control" id="inputEmail4"/>
