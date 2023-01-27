@@ -9,7 +9,6 @@ import axios from "axios";
 
 const Carrito = () => {
     const [state, dispatch] = useReducer(carritoReducer, carritoInitialState);
-
     const actualizarEstado= async () => {
     const productosURL="http://localhost:8080/products";
     const carritoURL="http://localhost:8080/carrito";
@@ -28,7 +27,6 @@ const Carrito = () => {
     actualizarEstado();
     }, []);
 
-
     const { products, carrito } = state;
   
     const addToCart = (id) => {
@@ -37,11 +35,11 @@ const Carrito = () => {
 
     const deleteFromCart = (id, eliminarTodos) => {
       if (eliminarTodos){
-        dispatch({type: TYPES.REMOVE_ALL_ITEMS, payload: id})
+        dispatch ({type: TYPES.REMOVE_ALL_ITEMS, payload: id})
       }
 
       else{
-        dispatch({type: TYPES.REMOVE_ITEM, payload: id})
+        dispatch ({type: TYPES.REMOVE_ITEM, payload: id})
       }
       };
 
@@ -49,11 +47,7 @@ const Carrito = () => {
     const clearCart = () => {dispatch({type: TYPES.CLEAR_CART})
   };
 
-
-  
-  
-  
-    return (
+  return (
       <div className="container-fluid">
         <h1 className='text-center text-capitalize m-2'>Nuestros Productos</h1>
         

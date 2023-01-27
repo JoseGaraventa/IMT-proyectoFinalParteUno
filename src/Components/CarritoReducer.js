@@ -55,60 +55,54 @@ export function carritoReducer(state, action) {
     }
 
     case TYPES.ADD_TO_CART: {
-      let nuevoItem = state.products.find(
-        (producto) => producto.id === action.payload
-      );
-      //console.log(nuevoItem);
-      //console.log({carrito: [...state.carrito, nuevoItem]});
-      let itemEnCarrito = state.carrito.find(
-        (item) => item.id === action.payload
-      );
+      let nuevoItem = state.products.find((producto) => producto.id === action.payload);
 
-      return itemEnCarrito? {
-            ...state,
-            carrito: state.carrito.map((item) =>
-              item.id === nuevoItem.id? {
-                    ...item,
-                    cantidad: item.cantidad + 1,
-                  }: item
-            ),
-          } :{
-            ...state,
-            carrito: [...state.carrito, nuevoItem],
+      let itemEnCarrito = state.carrito.find((item) => item.id === action.payload);
+
+      return itemEnCarrito
+          ? {
+              ...state,
+              carrito: state.carrito.map((item) => item.id === nuevoItem.id ? {
+                  ...item, cantidad: item.cantidad + 1,
+              } : item),
+          }
+          : {
+              ...state, carrito: [...state.carrito, nuevoItem]
           };
-    }
-    case TYPES.REMOVE_ITEM: {
-      let itemAEliminar = state.carrito.find (
-        (item) => item.id === action.payload
-      );
-
-      return itemAEliminar.cantidad > 1? 
-      {...state,
-       carrito: state.carrito.map((item)=>
-      item.id===action.payload?
-      {...item, cantidad: item.cantidad - 1}:
-      item ),
-      }:
-      {...state,
-      carrito: state.carrito.filter( item=>item.id !== item.payload )};
-      
-    }
-
-    case TYPES.REMOVE_ALL_ITEMS: {
-      let itemAEliminar = state.carrito.find (
-        (item) => item.id === action.payload
-      );
-
-      return {
-        ...state,
-        carrito: state.carrito.filter (item=> item.id !== item.payload)
-      };
-    }
-
-    case TYPES.CLEAR_CART: {
-      return carritoInitialState;
-    }
-    default:
-      return state;
   }
+
+  case TYPES.REMOVE_ITEM: {
+      let itemAEliminar = state.carrito.find((item) => item.id === action.payload);
+
+      return itemAEliminar.cantidad > 1 ? {
+
+          ...state,
+          carrito: state.carrito.map((item) => item.id === action.payload ? { ...item, cantidad: item.cantidad - 1 } : item),
+      } : {
+          ...state,
+          carrito: state.carrito.filter((item) => item.id !== action.payload)
+      };
+  }
+
+  case TYPES.REMOVE_ALL_ITEMS: {
+      let itemAEliminar = state.carrito.find(
+          (item) => item.id === action.payload
+      );
+      return {
+          ...state,
+          carrito: state.carrito.filter((item) => item.id !== action.payload)
+      }
+
+  }
+  case TYPES.CLEAR_CART: {
+      return {
+          ...state,
+          carrito: []
+      };
+  }
+  default:
+      return state;
 }
+
+
+};
