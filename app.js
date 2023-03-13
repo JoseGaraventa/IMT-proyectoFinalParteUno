@@ -2,15 +2,18 @@ const express = require('express');
 const app = express();
 const port = 4040;
 
+
 // app.use(bodyParser.urlencoded({ extended: false }))
 const bodyParser = require('body-parser')
 
 const productsRouter = require ("./routes/products");
+const commentsRouter = require ("./routes/api-externa");
 
 const dbConnect = require ("./database/dbConection");
 
-
+app.use(express.json());
 app.use("/products", productsRouter);
+app.use("/comments", commentsRouter);
 // app.use(express.json());
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
